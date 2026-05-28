@@ -1,7 +1,7 @@
 package bg.softuni.booknest.model.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -11,16 +11,16 @@ import java.time.LocalDate;
 @Table(name = "reservations")
 public class Reservation extends BaseEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne(optional = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id", nullable = false)
+    @ManyToOne(optional = false)
     private Book book;
 
+    @Column(nullable = false, name = "reservation_date")
     private LocalDate reservationDate;
 
+    @Column(nullable = false, name = "return_date")
     private LocalDate returnDate;
 
     public User getUser() {

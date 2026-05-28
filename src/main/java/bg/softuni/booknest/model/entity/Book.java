@@ -1,8 +1,14 @@
 package bg.softuni.booknest.model.entity;
 
+import bg.softuni.booknest.model.enums.BookStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import bg.softuni.booknest.model.enums.Genre;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "books")
@@ -17,14 +23,28 @@ public class Book extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String genre;
+    private Genre genre;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private boolean available;
+    private BookStatus status;
 
     @Column(nullable = false, name = "release_year")
     private int releaseYear;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal rentalPrice;
+
+    public BigDecimal getRentalPrice() {
+        return rentalPrice;
+    }
+
+    public Book setRentalPrice(BigDecimal rentalPrice) {
+        this.rentalPrice = rentalPrice;
+        return this;
+    }
 
     public String getTitle() {
         return title;
@@ -53,21 +73,21 @@ public class Book extends BaseEntity {
         return this;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public Book setGenre(String genre) {
+    public Book setGenre(Genre genre) {
         this.genre = genre;
         return this;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public BookStatus getStatus() {
+        return status;
     }
 
-    public Book setAvailable(boolean available) {
-        this.available = available;
+    public Book setStatus(BookStatus status) {
+        this.status = status;
         return this;
     }
 
