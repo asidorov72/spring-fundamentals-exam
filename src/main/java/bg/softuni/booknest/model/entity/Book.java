@@ -31,6 +31,9 @@ public class Book extends BaseEntity {
     @Column(nullable = false)
     private BookStatus status;
 
+    @Column(name = "book_image")
+    private String bookImage;
+
     @Column(nullable = false, name = "release_year")
     private int releaseYear;
 
@@ -88,6 +91,15 @@ public class Book extends BaseEntity {
 
     public Book setStatus(BookStatus status) {
         this.status = status;
+        return this;
+    }
+
+    public String getBookImage() {
+        return bookImage;
+    }
+
+    public Book setBookImage(String bookImage) {
+        this.bookImage = bookImage;
         return this;
     }
 

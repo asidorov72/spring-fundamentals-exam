@@ -23,6 +23,9 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(name = "profile_image")
+    private String profileImage;
+
     public String getUsername() {
         return username;
     }
@@ -65,6 +68,15 @@ public class User extends BaseEntity {
 
     public User setEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public User setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
         return this;
     }
 }

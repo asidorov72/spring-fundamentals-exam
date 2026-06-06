@@ -28,18 +28,20 @@ public class UserSeeder implements Seeder {
                 new User()
                         .setUsername("admin")
                         .setPassword(PASSWORD_ENCODER.encode("admin123"))
-                        .setFirstName("Admin")
-                        .setLastName("Adminov")
+                        .setFirstName("Alexander")
+                        .setLastName("Sidorov")
                         .setEmail("admin@booknest.com")
+                        .setProfileImage("https://avatars.githubusercontent.com/u/7371906?s=400&v=4")
         );
 
         userRepository.save(
                 new User()
                         .setUsername("user")
                         .setPassword(PASSWORD_ENCODER.encode("user123"))
-                        .setFirstName("Regular")
-                        .setLastName("User")
+                        .setFirstName("Johnny")
+                        .setLastName("English")
                         .setEmail("user@booknest.com")
+                        .setProfileImage("https://i.pravatar.cc/300?img=15")
         );
     }
 
