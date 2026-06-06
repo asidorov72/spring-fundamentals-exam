@@ -8,6 +8,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Component
 @Order(2)
@@ -25,70 +26,68 @@ public class BookSeeder implements Seeder {
             return;
         }
 
-        bookRepository.save(
+        List<Book> books = List.of(
                 new Book()
                         .setTitle("The Hobbit")
                         .setAuthor("J.R.R. Tolkien")
-                        .setDescription("Bilbo Baggins goes on an unexpected adventure.")
+                        .setDescription("Bilbo Baggins embarks on an unexpected journey through Middle-earth.")
                         .setGenre(Genre.FANTASY)
-                        .setStatus(BookStatus.ACTIVE)
                         .setReleaseYear(1937)
                         .setRentalPrice(BigDecimal.valueOf(4.99))
-        );
+                        .setStatus(BookStatus.ACTIVE)
+                        .setBookImage("https://www.smsa.org.au/wp-content/uploads/2022/07/Dune-by-Frank-Herbert-582x895.png"),
 
-        bookRepository.save(
                 new Book()
                         .setTitle("Dune")
                         .setAuthor("Frank Herbert")
-                        .setDescription("Epic science fiction saga.")
+                        .setDescription("Epic science fiction saga on the desert planet Arrakis.")
                         .setGenre(Genre.SCIENCE_FICTION)
-                        .setStatus(BookStatus.ACTIVE)
                         .setReleaseYear(1965)
                         .setRentalPrice(BigDecimal.valueOf(5.99))
-        );
+                        .setStatus(BookStatus.ACTIVE)
+                        .setBookImage("https://pictures.abebooks.com/isbn/9780425027066-us.jpg"),
 
-        bookRepository.save(
                 new Book()
                         .setTitle("Romeo and Juliet")
                         .setAuthor("William Shakespeare")
-                        .setDescription("Classic romantic tragedy.")
+                        .setDescription("Classic romantic tragedy about two young lovers.")
                         .setGenre(Genre.ROMANCE)
-                        .setStatus(BookStatus.ACTIVE)
                         .setReleaseYear(1597)
                         .setRentalPrice(BigDecimal.valueOf(3.99))
-        );
+                        .setStatus(BookStatus.ACTIVE)
+                        .setBookImage("https://pictures.abebooks.com/isbn/9780743477116-us.jpg"),
 
-        bookRepository.save(
                 new Book()
                         .setTitle("Hamlet")
                         .setAuthor("William Shakespeare")
                         .setDescription("One of the greatest dramas ever written.")
                         .setGenre(Genre.DRAMA)
-                        .setStatus(BookStatus.ACTIVE)
                         .setReleaseYear(1603)
                         .setRentalPrice(BigDecimal.valueOf(3.99))
-        );
+                        .setStatus(BookStatus.ACTIVE)
+                        .setBookImage("https://pictures.abebooks.com/isbn/9780743477123-us.jpg"),
 
-        bookRepository.save(
                 new Book()
                         .setTitle("The Da Vinci Code")
                         .setAuthor("Dan Brown")
-                        .setDescription("Mystery thriller novel.")
+                        .setDescription("Mystery thriller novel about secrets hidden in art and history.")
                         .setGenre(Genre.THRILLER)
-                        .setStatus(BookStatus.ACTIVE)
                         .setReleaseYear(2003)
                         .setRentalPrice(BigDecimal.valueOf(5.49))
-        );
+                        .setStatus(BookStatus.ACTIVE)
+                        .setBookImage("https://pictures.abebooks.com/isbn/9780307474278-us.jpg"),
 
-        bookRepository.save(
                 new Book()
                         .setTitle("Sapiens")
                         .setAuthor("Yuval Noah Harari")
                         .setDescription("A brief history of humankind.")
                         .setGenre(Genre.HISTORY)
-                        .setStatus(BookStatus.ACTIVE)
                         .setReleaseYear(2011)
                         .setRentalPrice(BigDecimal.valueOf(6.49))
+                        .setStatus(BookStatus.ACTIVE)
+                        .setBookImage("https://pictures.abebooks.com/isbn/9780062316097-us.jpg")
         );
+
+        bookRepository.saveAll(books);
     }
 }
