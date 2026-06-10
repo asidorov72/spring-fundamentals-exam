@@ -24,9 +24,11 @@
                     </div>
                     <div class="col-md-6">
                         <div class="right-element">
-                            <a th:href="@{/login}" class="user-account for-buy"><i
-                                    class="icon icon-user"></i><span>Account</span></a>
-                            <a th:href="@{/reservations}" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Reservations</span></a>
+<!--                            <a th:href="@{/login}" class="user-account for-buy"><i-->
+<!--                                    class="icon icon-user"></i><span>Account</span></a>-->
+<!--                            <a th:href="@{/reservations}" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Reservations</span></a>-->
+
+                            <th:block th:replace="~{fragments/auth-nav :: auth-nav}"></th:block>
 
                             <div class="action-menu">
 

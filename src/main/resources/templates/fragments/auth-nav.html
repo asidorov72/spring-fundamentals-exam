@@ -1,0 +1,38 @@
+<th:block th:fragment="auth-nav">
+
+    <a th:if="${session.user == null}"
+       th:href="@{/login}"
+       class="user-account for-buy">
+        <i class="icon icon-user"></i>
+        <span>Login</span>
+    </a>
+
+    <a th:if="${session.user == null}"
+       th:href="@{/register}"
+       class="user-account for-buy">
+        <i class="icon icon-user"></i>
+        <span>Register</span>
+    </a>
+
+    <a th:if="${session.user != null}"
+       th:href="@{/profile}"
+       class="user-account for-buy">
+        <i class="icon icon-user"></i>
+        <span th:text="${session.user.firstName}">Profile</span>
+    </a>
+
+    <a th:if="${session.user != null}"
+       th:href="@{/reservations}"
+       class="cart for-buy">
+        <i class="icon icon-clipboard"></i>
+        <span>Reservations</span>
+    </a>
+
+    <a th:if="${session.user != null}"
+       th:href="@{/logout}"
+       class="user-account for-buy">
+        <i class="icon icon-user"></i>
+        <span>Logout</span>
+    </a>
+
+</th:block>
