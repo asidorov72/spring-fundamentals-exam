@@ -1,5 +1,8 @@
 package bg.softuni.booknest.model.entity;
 
+import bg.softuni.booknest.model.enums.UserRole;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -14,10 +17,10 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, name = "first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(nullable = false, name = "last_name")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(nullable = false, unique = true)
@@ -25,6 +28,10 @@ public class User extends BaseEntity {
 
     @Column(name = "profile_image")
     private String profileImage;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserRole role;
 
     public String getUsername() {
         return username;
@@ -77,6 +84,15 @@ public class User extends BaseEntity {
 
     public User setProfileImage(String profileImage) {
         this.profileImage = profileImage;
+        return this;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public User setRole(UserRole role) {
+        this.role = role;
         return this;
     }
 }
