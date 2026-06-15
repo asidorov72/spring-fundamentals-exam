@@ -1,5 +1,6 @@
 package bg.softuni.booknest.service;
 
+import bg.softuni.booknest.mapper.UserMapper;
 import bg.softuni.booknest.model.dto.UserDto;
 import bg.softuni.booknest.model.dto.UserLoginRequest;
 import bg.softuni.booknest.model.dto.UserRegisterRequest;
@@ -14,15 +15,17 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private static final String DEFAULT_PROFILE_IMAGE = "/images/default-profile.png";
-
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    private final UserMapper userMapper;
+
     public UserService(UserRepository userRepository,
-                       PasswordEncoder passwordEncoder) {
+                       PasswordEncoder passwordEncoder,
+                       UserMapper userMapper) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
     }
 
     public boolean register(UserRegisterRequest request) {
@@ -51,17 +54,10 @@ public class UserService {
 
     public Optional<UserDto> login(UserLoginRequest request) {
         return userRepository.findByUsername(request.getUsername())
-                .filter(user -> passwordEncoder.matches(request.getPassword(), user.getPassword()))
-                .map(this::mapToUserDto);
+                .filter(user -> passwordEncoder.matches(
+                        request.getPassword(),
+                        user.getPassword()))
+                .map(userMapper::toDto);
     }
 
-    private UserDto mapToUserDto(User user) {
-        return new UserDto()
-                .setId(user.getId())
-                .setFirstName(user.getFirstName())
-                .setLastName(user.getLastName())
-                .setUsername(user.getUsername())
-                .setEmail(user.getEmail())
-                .setProfileImage(user.getProfileImage());
-    }
 }

@@ -35,7 +35,8 @@
                         <h2 class="section-title">Register</h2>
                     </div>
 
-                    <form th:action="@{/login}"
+                    <form class="auth-form"
+                          th:action="@{/login}"
                           th:object="${userLoginRequest}"
                           method="post">
 
@@ -65,10 +66,12 @@
                             </div>
                         </div>
 
-                        <button type="submit"
-                                class="btn btn-outline-accent btn-accent-arrow w-100">
-                            Login <i class="icon icon-ns-arrow-right"></i>
-                        </button>
+                        <div class="btn-wrap text-center">
+                            <button type="submit"
+                                    class="btn btn-outline-accent btn-accent-arrow">
+                                Login <i class="icon icon-ns-arrow-right"></i>
+                            </button>
+                        </div>
                     </form>
 
                     <div class="mt-4 text-center">

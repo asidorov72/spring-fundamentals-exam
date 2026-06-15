@@ -39,7 +39,8 @@
                         Registration failed. Username or email may already exist, or passwords do not match.
                     </div>
 
-                    <form th:action="@{/register}"
+                    <form class="auth-form"
+                          th:action="@{/register}"
                           th:object="${userRegisterRequest}"
                           method="post">
 
@@ -87,11 +88,12 @@
                             </div>
                         </div>
 
-                        <button type="submit"
-                                class="btn btn-outline-accent btn-accent-arrow w-100">
-                            Register <i class="icon icon-ns-arrow-right"></i>
-                        </button>
-
+                        <div class="btn-wrap text-center">
+                            <button type="submit"
+                                    class="btn btn-outline-accent btn-accent-arrow">
+                                Register <i class="icon icon-ns-arrow-right"></i>
+                            </button>
+                        </div>
                     </form>
 
                     <div class="mt-4 text-center">
