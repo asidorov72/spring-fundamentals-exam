@@ -2,6 +2,7 @@ package bg.softuni.booknest.model.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class UserRegisterRequest {
@@ -10,8 +11,12 @@ public class UserRegisterRequest {
     @Size(min = 3, max = 20)
     private String username;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "Email is required")
+    @Email(message = "Please enter a valid email address")
+    @Pattern(
+            regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+            message = "Email must contain a valid domain, for example user@gmail.com"
+    )
     private String email;
 
     @NotBlank

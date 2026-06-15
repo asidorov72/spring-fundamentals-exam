@@ -35,10 +35,6 @@
                         <h2 class="section-title">Register</h2>
                     </div>
 
-                    <div th:if="${registerError}" class="alert alert-danger">
-                        Registration failed. Username or email may already exist, or passwords do not match.
-                    </div>
-
                     <form th:action="@{/login}"
                           th:object="${userLoginRequest}"
                           method="post">
@@ -52,6 +48,10 @@
                                    class="form-control"
                                    placeholder="Username"
                                    th:field="*{username}">
+                            <div class="text-danger small mt-1"
+                                 th:if="${#fields.hasErrors('username')}"
+                                 th:errors="*{username}">
+                            </div>
                         </div>
 
                         <div class="mb-4">
@@ -59,6 +59,10 @@
                                    class="form-control"
                                    placeholder="Password"
                                    th:field="*{password}">
+                            <div class="text-danger small mt-1"
+                                 th:if="${#fields.hasErrors('password')}"
+                                 th:errors="*{password}">
+                            </div>
                         </div>
 
                         <button type="submit"

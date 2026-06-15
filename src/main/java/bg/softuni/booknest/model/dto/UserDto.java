@@ -1,6 +1,7 @@
 package bg.softuni.booknest.model.dto;
 
 import java.util.UUID;
+import bg.softuni.booknest.model.enums.UserRole;
 
 public class UserDto {
 
@@ -15,6 +16,8 @@ public class UserDto {
     private String email;
 
     private String profileImage;
+
+    private UserRole role;
 
     public UUID getId() {
         return id;
@@ -71,6 +74,18 @@ public class UserDto {
     }
 
     public String getFullName() {
-        return firstName + " " + lastName;
+        String first = firstName == null ? "" : firstName;
+        String last = lastName == null ? "" : lastName;
+
+        return (first + " " + last).trim();
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public UserDto setRole(UserRole role) {
+        this.role = role;
+        return this;
     }
 }

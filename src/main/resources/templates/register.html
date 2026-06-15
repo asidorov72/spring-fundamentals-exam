@@ -48,6 +48,10 @@
                                    class="form-control"
                                    placeholder="Username"
                                    th:field="*{username}">
+                            <div class="text-danger small mt-1"
+                                 th:if="${#fields.hasErrors('username')}"
+                                 th:errors="*{username}">
+                            </div>
                         </div>
 
                         <div class="mb-3">
@@ -55,6 +59,10 @@
                                    class="form-control"
                                    placeholder="Email"
                                    th:field="*{email}">
+                            <div class="text-danger small mt-1"
+                                 th:if="${#fields.hasErrors('email')}"
+                                 th:errors="*{email}">
+                            </div>
                         </div>
 
                         <div class="mb-3">
@@ -62,6 +70,10 @@
                                    class="form-control"
                                    placeholder="Password"
                                    th:field="*{password}">
+                            <div class="text-danger small mt-1"
+                                 th:if="${#fields.hasErrors('password')}"
+                                 th:errors="*{password}">
+                            </div>
                         </div>
 
                         <div class="mb-4">
@@ -69,6 +81,10 @@
                                    class="form-control"
                                    placeholder="Confirm Password"
                                    th:field="*{confirmPassword}">
+                            <div class="text-danger small mt-1"
+                                 th:if="${#fields.hasErrors('confirmPassword')}"
+                                 th:errors="*{confirmPassword}">
+                            </div>
                         </div>
 
                         <button type="submit"

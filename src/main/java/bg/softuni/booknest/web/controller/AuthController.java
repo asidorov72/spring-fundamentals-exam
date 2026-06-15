@@ -37,7 +37,9 @@ public class AuthController {
             BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("register");
+            ModelAndView modelAndView = new ModelAndView("register");
+            modelAndView.addObject("userRegisterRequest", userRegisterRequest);
+            return modelAndView;
         }
 
         boolean registered = userService.register(userRegisterRequest);
@@ -68,7 +70,9 @@ public class AuthController {
             HttpSession session
     ) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("login");
+            ModelAndView modelAndView = new ModelAndView("login");
+            modelAndView.addObject("userLoginRequest", userLoginRequest);
+            return modelAndView;
         }
 
         Optional<UserDto> userDto = userService.login(userLoginRequest);

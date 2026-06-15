@@ -4,6 +4,7 @@ import bg.softuni.booknest.model.dto.UserDto;
 import bg.softuni.booknest.model.dto.UserLoginRequest;
 import bg.softuni.booknest.model.dto.UserRegisterRequest;
 import bg.softuni.booknest.model.entity.User;
+import bg.softuni.booknest.model.enums.UserRole;
 import bg.softuni.booknest.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,8 @@ public class UserService {
         User user = new User()
                 .setUsername(request.getUsername())
                 .setEmail(request.getEmail())
-                .setPassword(passwordEncoder.encode(request.getPassword()));
+                .setPassword(passwordEncoder.encode(request.getPassword()))
+                .setRole(UserRole.USER);
 
         userRepository.save(user);
 
