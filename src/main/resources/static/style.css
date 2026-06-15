@@ -2442,3 +2442,76 @@ footer#footer {
     width: 100%;
   }
 }
+
+/*----- Auth Section
+--------------------------------------------------------------*/
+
+.auth-form .btn-accent-arrow {
+  padding: 12px 28px;
+  line-height: 1;
+  height: auto;
+}
+
+/*----- Admin Section
+--------------------------------------------------------------*/
+
+.admin-layout {
+  display: flex;
+  min-height: 80vh;
+  gap: 32px;
+  padding: 40px;
+}
+
+.admin-sidebar {
+  width: 260px;
+  padding: 24px;
+  border: 1px solid #e0d6cf;
+  background: #f8f5f1;
+}
+
+.admin-sidebar a {
+  display: block;
+
+  margin: 0;
+  padding: 12px 0;
+
+  font-family: var(--body-font);
+
+  font-size: 16px;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  color: var(--body-text-color);
+
+  text-decoration: none;
+
+  transition: all 0.3s ease-out;
+}
+
+.admin-sidebar a:hover,
+.admin-sidebar a.active {
+  color: var(--accent-color);
+}
+
+.admin-sidebar h4 {
+  font-family: var(--heading-font);
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 32px;
+  border: 1px solid #e0d6cf;
+  background: #fff;
+}
+
+.admin-brand {
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}

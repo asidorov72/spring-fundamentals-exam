@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head('BookNest | Admin Dashboard')}">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <div th:replace="~{admin/fragments/sidebar :: sidebar}">
+    </div>
+
+    <main class="admin-content">
+
+        <div th:replace="~{admin/fragments/header :: header('Admin Dashboard')}">
+        </div>
+
+        <p>
+            Welcome to BookNest management area.
+        </p>
+
+    </main>
+
+</div>
+
+<div th:replace="~{admin/fragments/footer :: footer}">
+</div>
+
+</body>
+</html>

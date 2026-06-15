@@ -28,6 +28,12 @@
         <span>Reservations</span>
     </a>
 
+    <a th:if="${session.user != null and session.user.role.name() == 'ADMIN'}"
+       th:href="@{/admin}"
+       class="user-account for-buy">
+        <span>Admin Section</span>
+    </a>
+
     <a th:if="${session.user != null}"
        th:href="@{/logout}"
        class="user-account for-buy">
