@@ -2455,6 +2455,11 @@ footer#footer {
 /*----- Admin Section
 --------------------------------------------------------------*/
 
+.admin-content .section-header .section-title:before,
+.admin-content .section-header .section-title:after {
+  display: none;
+}
+
 .admin-layout {
   display: flex;
   min-height: 80vh;
@@ -2471,12 +2476,9 @@ footer#footer {
 
 .admin-sidebar a {
   display: block;
-
-  margin: 0;
   padding: 12px 0;
 
   font-family: var(--body-font);
-
   font-size: 16px;
   font-weight: 500;
 
@@ -2484,7 +2486,6 @@ footer#footer {
   letter-spacing: 0.12em;
 
   color: var(--body-text-color);
-
   text-decoration: none;
 
   transition: all 0.3s ease-out;
@@ -2495,16 +2496,9 @@ footer#footer {
   color: var(--accent-color);
 }
 
-.admin-sidebar h4 {
-  font-family: var(--heading-font);
-  font-size: 32px;
-  font-weight: 400;
-  margin-bottom: 40px;
-}
-
 .admin-content {
   flex: 1;
-  padding: 32px;
+  padding: 48px;
   border: 1px solid #e0d6cf;
   background: #fff;
 }
@@ -2514,4 +2508,72 @@ footer#footer {
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 40px;
+}
+
+/* ----- Admin Table ----- */
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+}
+
+.admin-table th {
+  padding: 16px;
+  border-bottom: 2px solid #e0d6cf;
+  text-align: left;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.admin-table td {
+  padding: 16px;
+  border-bottom: 1px solid #ece5de;
+}
+
+.admin-table tr:hover {
+  background-color: #faf8f5;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+  font-style: italic;
+}
+
+/* ----- Admin Form uses Booksaw/Auth style ----- */
+
+.admin-form-wrapper {
+  max-width: 520px;
+  margin-top: 40px;
+}
+
+.admin-form-wrapper .form-control {
+  height: 48px;
+}
+
+.admin-form-actions {
+  margin-top: 32px;
+}
+
+.admin-form-actions a {
+  margin-left: 20px;
+}
+
+/* Admin form fixes */
+
+.admin-content .section-header .section-title:before,
+.admin-content .section-header .section-title:after {
+  display: none;
+}
+
+.admin-content .auth-form select.form-control {
+  appearance: auto;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
 }

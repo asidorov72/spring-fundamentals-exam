@@ -15,6 +15,8 @@ public class UserMapper {
                 .setUsername(user.getUsername())
                 .setEmail(user.getEmail())
                 .setProfileImage(user.getProfileImage())
-                .setRole(user.getRole());
+                .setRole(user.getRole())
+                .setCreatedOn(user.getCreatedOn())
+                .setUpdatedOn(user.getUpdatedOn());
     }
 }
