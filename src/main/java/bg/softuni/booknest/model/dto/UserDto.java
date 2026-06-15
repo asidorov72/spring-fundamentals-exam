@@ -1,5 +1,6 @@
 package bg.softuni.booknest.model.dto;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 import bg.softuni.booknest.model.enums.UserRole;
 
@@ -18,6 +19,10 @@ public class UserDto {
     private String profileImage;
 
     private UserRole role;
+
+    private LocalDateTime createdOn;
+
+    private LocalDateTime updatedOn;
 
     public UUID getId() {
         return id;
@@ -86,6 +91,24 @@ public class UserDto {
 
     public UserDto setRole(UserRole role) {
         this.role = role;
+        return this;
+    }
+
+    public LocalDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public UserDto setCreatedOn(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
+        return this;
+    }
+
+    public LocalDateTime getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public UserDto setUpdatedOn(LocalDateTime updatedOn) {
+        this.updatedOn = updatedOn;
         return this;
     }
 }
