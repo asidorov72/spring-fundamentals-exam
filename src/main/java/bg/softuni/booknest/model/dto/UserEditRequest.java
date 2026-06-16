@@ -1,21 +1,22 @@
 package bg.softuni.booknest.model.dto;
 
 import bg.softuni.booknest.model.enums.UserRole;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public class UserEditRequest {
 
-    @Size(max = 50)
+    @Size(min = 6, max = 50)
     private String firstName;
 
-    @Size(max = 50)
+    @Size(min = 6, max = 50)
     private String lastName;
 
     @NotBlank(message = "Email is required")
     @Email(message = "Please enter a valid email address")
+    @Pattern(
+            regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+            message = "Email must contain a valid domain, for example user@gmail.com"
+    )
     private String email;
 
     @NotNull(message = "Role is required")

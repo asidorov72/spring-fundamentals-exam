@@ -2,7 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{admin/fragments/head :: head('BookNest | Users Management')}">
+<head th:replace="~{admin/fragments/head :: head('BookNest | Books Management')}">
 </head>
 
 <body>
@@ -14,9 +14,70 @@
 
     <main class="admin-content">
 
-        <div th:replace="~{admin/fragments/header :: header('Books Management')}"></div>
+        <div th:replace="~{admin/fragments/header :: header('Books Management')}">
+        </div>
 
-        <p>Books list will be displayed here.</p>
+        <div class="admin-card">
+
+            <table class="admin-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>TITLE</th>
+                    <th>AUTHOR</th>
+                    <th>GENRE</th>
+                    <th>STATUS</th>
+                    <th>RELEASE YEAR</th>
+                    <th>CREATED ON</th>
+                    <th>ACTIONS</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:if="${#lists.isEmpty(books)}">
+                    <td colspan="8" class="empty-state">
+                        No books found.
+                    </td>
+                </tr>
+
+                <tr th:each="book : ${books}">
+                    <td th:text="${book.id}">id</td>
+
+                    <td th:text="${book.title}">Title</td>
+
+                    <td th:text="${book.author}">Author</td>
+
+                    <td th:text="${book.genre}">Genre</td>
+
+                    <td>
+                        <span class="admin-status-badge"
+                              th:classappend="${
+                                  book.status.name() == 'ACTIVE' ? ' status-active' :
+                                  book.status.name() == 'RESERVED' ? ' status-reserved' :
+                                  ' status-inactive'
+                              }"
+                              th:text="${book.status}">
+                            ACTIVE
+                        </span>
+                    </td>
+
+                    <td th:text="${book.releaseYear}">2024</td>
+
+                    <td th:text="${#temporals.format(book.createdOn, 'dd.MM.yyyy HH:mm')}">
+                        15.06.2026 14:30
+                    </td>
+
+                    <td>
+                        <a th:href="@{/admin/books/{id}/edit(id=${book.id})}"
+                           class="admin-action-btn">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
 
     </main>
 

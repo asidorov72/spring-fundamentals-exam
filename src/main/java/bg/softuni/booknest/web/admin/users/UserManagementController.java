@@ -2,11 +2,12 @@ package bg.softuni.booknest.web.admin.users;
 
 import bg.softuni.booknest.model.dto.UserEditRequest;
 import bg.softuni.booknest.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import bg.softuni.booknest.model.dto.UserDto;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.UUID;
 
@@ -24,6 +25,7 @@ public class UserManagementController {
     public ModelAndView users() {
         ModelAndView modelAndView = new ModelAndView("admin/users");
 
+        modelAndView.addObject("activePage", "users");
         modelAndView.addObject("users", userService.getAllUsers());
 
         return modelAndView;
@@ -42,6 +44,7 @@ public class UserManagementController {
 
         ModelAndView modelAndView = new ModelAndView("admin/user-edit");
 
+        modelAndView.addObject("activePage", "users");
         modelAndView.addObject("userEditRequest", request);
         modelAndView.addObject("userId", id);
 
@@ -49,13 +52,23 @@ public class UserManagementController {
     }
 
     @PostMapping("/{id}/edit")
-    public String updateUser(
+    public ModelAndView updateUser(
             @PathVariable UUID id,
-            @ModelAttribute UserEditRequest userEditRequest) {
+            @Valid @ModelAttribute("userEditRequest") UserEditRequest userEditRequest,
+            BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            ModelAndView mv = new ModelAndView("admin/user-edit");
+
+            mv.addObject("activePage", "users");
+            mv.addObject("userId", id);
+
+            return mv;
+        }
 
         userService.updateUser(id, userEditRequest);
 
-        return "redirect:/admin/users";
+        return new ModelAndView("redirect:/admin/users");
     }
 
 }
