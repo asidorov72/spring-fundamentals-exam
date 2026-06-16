@@ -78,6 +78,11 @@
                            class="admin-action-btn">
                             Edit
                         </a>
+                        <a th:href="@{/admin/books/{id}/delete(id=${book.id})}"
+                           class="admin-action-btn"
+                           th:attr="onclick=|return confirm('Delete book: ${book.title}?');|">
+                            Delete
+                        </a>
                     </td>
                 </tr>
                 </tbody>

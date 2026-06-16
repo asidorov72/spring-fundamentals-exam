@@ -111,4 +111,12 @@ public class BookManagementController {
 
         return new ModelAndView("redirect:/admin/books");
     }
+
+    @GetMapping("/{id}/delete")
+    public String deleteBook(@PathVariable UUID id) {
+
+        bookService.deleteBook(id);
+
+        return "redirect:/admin/books";
+    }
 }
