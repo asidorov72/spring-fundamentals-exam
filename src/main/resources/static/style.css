@@ -2577,3 +2577,38 @@ footer#footer {
   -webkit-appearance: auto;
   -moz-appearance: auto;
 }
+
+/* Books Management */
+
+.admin-status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-reserved {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.status-inactive {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+/*.admin-action-btn-danger {*/
+/*  color: #a94442;*/
+/*}*/
+
+/*.admin-action-btn-danger:hover {*/
+/*  color: #843534;*/
+/*}*/

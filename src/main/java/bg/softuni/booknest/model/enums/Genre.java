@@ -6,5 +6,6 @@ public enum Genre {
     DRAMA,
     THRILLER,
     HISTORY,
-    ROMANCE
+    ROMANCE,
+    CHILDREN
 }
