@@ -51,4 +51,18 @@ public class BookService {
 
         bookRepository.save(book);
     }
+
+    public void createBook(BookEditRequest request) {
+        Book book = new Book()
+                .setTitle(request.getTitle())
+                .setAuthor(request.getAuthor())
+                .setDescription(request.getDescription())
+                .setGenre(request.getGenre())
+                .setStatus(request.getStatus())
+                .setBookImage(request.getBookImage())
+                .setReleaseYear(request.getReleaseYear())
+                .setRentalPrice(request.getRentalPrice());
+
+        bookRepository.save(book);
+    }
 }

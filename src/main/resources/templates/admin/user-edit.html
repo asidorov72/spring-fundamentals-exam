@@ -68,10 +68,12 @@
                 </div>
 
                 <div class="mb-4">
-                    <select class="form-control"
-                            th:field="*{role}">
-                        <option value="USER">USER</option>
-                        <option value="ADMIN">ADMIN</option>
+                    <select class="form-control" th:field="*{role}">
+                        <option value="">Select a Role</option>
+                        <option th:each="role : ${roles}"
+                                th:value="${role}"
+                                th:text="${role}">
+                        </option>
                     </select>
 
                     <div class="text-danger small mt-1"

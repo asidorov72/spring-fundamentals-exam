@@ -1,6 +1,7 @@
 package bg.softuni.booknest.web.admin.users;
 
 import bg.softuni.booknest.model.dto.UserEditRequest;
+import bg.softuni.booknest.model.enums.UserRole;
 import bg.softuni.booknest.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -44,6 +45,7 @@ public class UserManagementController {
 
         ModelAndView modelAndView = new ModelAndView("admin/user-edit");
 
+        modelAndView.addObject("roles", UserRole.values());
         modelAndView.addObject("activePage", "users");
         modelAndView.addObject("userEditRequest", request);
         modelAndView.addObject("userId", id);
@@ -60,6 +62,7 @@ public class UserManagementController {
         if (bindingResult.hasErrors()) {
             ModelAndView mv = new ModelAndView("admin/user-edit");
 
+            mv.addObject("roles", UserRole.values());
             mv.addObject("activePage", "users");
             mv.addObject("userId", id);
 

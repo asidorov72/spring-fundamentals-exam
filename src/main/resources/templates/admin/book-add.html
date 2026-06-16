@@ -2,7 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{admin/fragments/head :: head('Edit Book')}">
+<head th:replace="~{admin/fragments/head :: head('Add Book')}">
 </head>
 
 <body>
@@ -20,14 +20,14 @@
             </div>
 
             <h2 class="section-title">
-                Edit Book
+                Add Book
             </h2>
         </div>
 
         <div class="col-md-8 col-lg-6">
 
             <form class="auth-form"
-                  th:action="@{/admin/books/{id}/edit(id=${bookId})}"
+                  th:action="@{/admin/books/add}"
                   th:object="${bookEditRequest}"
                   method="post">
 
@@ -133,7 +133,7 @@
 
                     <button type="submit"
                             class="btn btn-outline-accent btn-accent-arrow">
-                        Save Changes
+                        Add Book
                     </button>
 
                     <a th:href="@{/admin/books}"
