@@ -4,6 +4,7 @@ import bg.softuni.booknest.mapper.BookMapper;
 import bg.softuni.booknest.model.dto.BookDto;
 import bg.softuni.booknest.model.dto.BookEditRequest;
 import bg.softuni.booknest.model.entity.Book;
+import bg.softuni.booknest.model.enums.BookStatus;
 import bg.softuni.booknest.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,7 @@ public class BookService {
         book.setBookImage(request.getBookImage());
         book.setReleaseYear(request.getReleaseYear());
         book.setRentalPrice(request.getRentalPrice());
+        book.setFeatured(request.isFeatured());
 
         bookRepository.save(book);
     }
@@ -59,6 +61,7 @@ public class BookService {
                 .setDescription(request.getDescription())
                 .setGenre(request.getGenre())
                 .setStatus(request.getStatus())
+                .setFeatured(request.isFeatured())
                 .setBookImage(request.getBookImage())
                 .setReleaseYear(request.getReleaseYear())
                 .setRentalPrice(request.getRentalPrice());
@@ -68,5 +71,21 @@ public class BookService {
 
     public void deleteBook(UUID id) {
         bookRepository.deleteById(id);
+    }
+
+    public List<BookDto> getRecentlyAddedBooks() {
+        return bookRepository
+                .findTop8ByStatusOrderByCreatedOnDesc(BookStatus.ACTIVE)
+                .stream()
+                .map(bookMapper::toDto)
+                .toList();
+    }
+
+    public List<BookDto> getFeaturedBooks() {
+        return bookRepository
+                .findTop4ByFeaturedTrueAndStatusOrderByCreatedOnDesc(BookStatus.ACTIVE)
+                .stream()
+                .map(bookMapper::toDto)
+                .toList();
     }
 }

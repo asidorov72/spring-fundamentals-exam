@@ -27,6 +27,8 @@ public class BookDto {
 
     private BigDecimal rentalPrice;
 
+    private boolean featured;
+
     private LocalDateTime createdOn;
 
     private LocalDateTime updatedOn;
@@ -127,6 +129,15 @@ public class BookDto {
 
     public BookDto setUpdatedOn(LocalDateTime updatedOn) {
         this.updatedOn = updatedOn;
+        return this;
+    }
+
+    public boolean isFeatured() {
+        return featured;
+    }
+
+    public BookDto setFeatured(boolean featured) {
+        this.featured = featured;
         return this;
     }
 }

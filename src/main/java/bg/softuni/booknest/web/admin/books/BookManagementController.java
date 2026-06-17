@@ -45,7 +45,8 @@ public class BookManagementController {
                 .setStatus(book.getStatus())
                 .setBookImage(book.getBookImage())
                 .setReleaseYear(book.getReleaseYear())
-                .setRentalPrice(book.getRentalPrice());
+                .setRentalPrice(book.getRentalPrice())
+                .setFeatured(book.isFeatured());
 
         ModelAndView mv = new ModelAndView("admin/book-edit");
 

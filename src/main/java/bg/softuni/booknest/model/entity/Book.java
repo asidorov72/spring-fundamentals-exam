@@ -1,5 +1,6 @@
 package bg.softuni.booknest.model.entity;
 
+import bg.softuni.booknest.model.dto.BookEditRequest;
 import bg.softuni.booknest.model.enums.BookStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,6 +40,9 @@ public class Book extends BaseEntity {
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal rentalPrice;
+
+    @Column(nullable = false)
+    private boolean featured;
 
     public BigDecimal getRentalPrice() {
         return rentalPrice;
@@ -109,6 +113,15 @@ public class Book extends BaseEntity {
 
     public Book setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
+        return this;
+    }
+
+    public boolean isFeatured() {
+        return featured;
+    }
+
+    public Book setFeatured(boolean featured) {
+        this.featured = featured;
         return this;
     }
 }

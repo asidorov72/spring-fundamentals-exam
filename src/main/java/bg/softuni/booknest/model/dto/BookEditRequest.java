@@ -36,6 +36,8 @@ public class BookEditRequest {
     @DecimalMin(value = "0.01", message = "Rental price must be greater than zero")
     private BigDecimal rentalPrice;
 
+    private boolean featured;
+
     public String getTitle() {
         return title;
     }
@@ -105,6 +107,15 @@ public class BookEditRequest {
 
     public BookEditRequest setRentalPrice(BigDecimal rentalPrice) {
         this.rentalPrice = rentalPrice;
+        return this;
+    }
+
+    public boolean isFeatured() {
+        return featured;
+    }
+
+    public BookEditRequest setFeatured(boolean featured) {
+        this.featured = featured;
         return this;
     }
 }

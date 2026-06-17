@@ -29,11 +29,13 @@
                 <thead>
                 <tr>
                     <th>ID</th>
+                    <th>COVER</th>
                     <th>TITLE</th>
                     <th>AUTHOR</th>
                     <th>GENRE</th>
                     <th>STATUS</th>
-                    <th>RELEASE YEAR</th>
+                    <th>FEATURED</th>
+                    <th>YEAR</th>
                     <th>CREATED ON</th>
                     <th>ACTIONS</th>
                 </tr>
@@ -48,6 +50,14 @@
 
                 <tr th:each="book : ${books}">
                     <td th:text="${book.id}">id</td>
+
+                    <td>
+                        <img th:src="${#strings.isEmpty(book.bookImage)
+                            ? '/images/product-item-no-image-cover.png'
+                            : book.bookImage}"
+                             alt="Cover"
+                             class="book-cover-thumb">
+                    </td>
 
                     <td th:text="${book.title}">Title</td>
 
@@ -64,6 +74,15 @@
                               }"
                               th:text="${book.status}">
                             ACTIVE
+                        </span>
+                    </td>
+
+                    <td>
+                        <span th:if="${book.featured}" style="color:#2e7d32;font-size:18px;">
+                            ★
+                        </span>
+                        <span th:unless="${book.featured}">
+                            —
                         </span>
                     </td>
 
