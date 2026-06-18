@@ -27,13 +27,16 @@ public class BookEditRequest {
 
     private String bookImage;
 
+    @NotNull(message = "Release year is required")
     @Min(value = 1000, message = "Release year must be after 1000")
     @Max(value = 2100, message = "Release year cannot be after 2100")
-    private int releaseYear;
+    private Integer releaseYear;
 
     @NotNull(message = "Rental price is required")
     @DecimalMin(value = "0.01", message = "Rental price must be greater than zero")
     private BigDecimal rentalPrice;
+
+    private boolean featured;
 
     public String getTitle() {
         return title;
@@ -89,11 +92,11 @@ public class BookEditRequest {
         return this;
     }
 
-    public int getReleaseYear() {
+    public Integer getReleaseYear() {
         return releaseYear;
     }
 
-    public BookEditRequest setReleaseYear(int releaseYear) {
+    public BookEditRequest setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
         return this;
     }
@@ -104,6 +107,15 @@ public class BookEditRequest {
 
     public BookEditRequest setRentalPrice(BigDecimal rentalPrice) {
         this.rentalPrice = rentalPrice;
+        return this;
+    }
+
+    public boolean isFeatured() {
+        return featured;
+    }
+
+    public BookEditRequest setFeatured(boolean featured) {
+        this.featured = featured;
         return this;
     }
 }

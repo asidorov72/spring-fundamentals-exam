@@ -18,6 +18,7 @@ public class BookMapper {
                 .setBookImage(book.getBookImage())
                 .setReleaseYear(book.getReleaseYear())
                 .setRentalPrice(book.getRentalPrice())
+                .setFeatured(book.isFeatured())
                 .setCreatedOn(book.getCreatedOn())
                 .setUpdatedOn(book.getUpdatedOn());
     }

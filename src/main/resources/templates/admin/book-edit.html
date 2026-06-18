@@ -101,6 +101,7 @@
                     <input type="number"
                            class="form-control"
                            placeholder="Release Year"
+                           min="1000"
                            th:field="*{releaseYear}">
 
                     <div class="text-danger small mt-1"
@@ -112,6 +113,7 @@
                 <div class="mb-3">
                     <input type="number"
                            step="0.01"
+                           min="0"
                            class="form-control"
                            placeholder="Rental Price"
                            th:field="*{rentalPrice}">
@@ -122,11 +124,36 @@
                     </div>
                 </div>
 
+                <div class="mb-4 text-center">
+                    <img th:src="${bookEditRequest.bookImage}"
+                         th:unless="${#strings.isEmpty(bookEditRequest.bookImage)}"
+                         alt="Book Cover"
+                         class="img-fluid rounded shadow-sm"
+                         style="max-height: 300px;">
+
+                    <img th:src="@{/images/single-no-image-cover.png}"
+                         th:if="${#strings.isEmpty(bookEditRequest.bookImage)}"
+                         alt="Book Cover"
+                         class="img-fluid rounded shadow-sm"
+                         style="max-height: 300px;">
+                </div>
+
                 <div class="mb-4">
                     <input type="text"
                            class="form-control"
                            placeholder="Book Image URL"
                            th:field="*{bookImage}">
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox"
+                           class="form-check-input"
+                           id="featured"
+                           th:field="*{featured}">
+
+                    <label class="form-check-label" for="featured">
+                        Featured Book
+                    </label>
                 </div>
 
                 <div class="btn-wrap">
