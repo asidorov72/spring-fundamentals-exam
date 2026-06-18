@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface BookRepository extends JpaRepository<Book, UUID> {
     List<Book> findTop8ByStatusOrderByCreatedOnDesc(BookStatus status);
-    List<Book> findTop4ByFeaturedTrueAndStatusOrderByCreatedOnDesc(
-            BookStatus status);
+    List<Book> findTop4ByFeaturedTrueAndStatusOrderByCreatedOnDesc(BookStatus status);
+    List<Book> findAllByStatusOrderByRentalPriceDesc(BookStatus status);
 }

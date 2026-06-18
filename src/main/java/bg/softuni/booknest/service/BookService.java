@@ -88,4 +88,13 @@ public class BookService {
                 .map(bookMapper::toDto)
                 .toList();
     }
+
+    // Popular Books = ACTIVE книги, отсортированные по rentalPrice DESC, максимум 8
+    public List<BookDto> getPopularBooks() {
+        return bookRepository.findAllByStatusOrderByRentalPriceDesc(BookStatus.ACTIVE)
+                .stream()
+                .limit(8)
+                .map(bookMapper::toDto)
+                .toList();
+    }
 }
