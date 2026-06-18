@@ -2633,10 +2633,8 @@ footer#footer {
   display: block;
 }
 
-/*.admin-action-btn-danger {*/
-/*  color: #a94442;*/
-/*}*/
+.top-content .user-account.for-buy {
+  color: #555;
+  text-decoration: none;
+}
 
-/*.admin-action-btn-danger:hover {*/
-/*  color: #843534;*/
-/*}*/
