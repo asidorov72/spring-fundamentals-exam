@@ -28,6 +28,7 @@ public class HomeController {
         mv.addObject("featuredBooks", bookService.getFeaturedBooks());
         mv.addObject("genres", Genre.values());
         mv.addObject("popularBooks", bookService.getPopularBooks());
+        mv.addObject("readersChoiceBook", bookService.getReadersChoiceBook());
         mv.addObject("books", bookService.getAllBooks());
 
         return mv;

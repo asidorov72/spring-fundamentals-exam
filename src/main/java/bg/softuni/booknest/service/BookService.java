@@ -9,6 +9,7 @@ import bg.softuni.booknest.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -96,5 +97,17 @@ public class BookService {
                 .limit(8)
                 .map(bookMapper::toDto)
                 .toList();
+    }
+
+    public BookDto getReadersChoiceBook() {
+        List<Book> activeBooks = bookRepository.findAllByStatus(BookStatus.ACTIVE);
+
+        if (activeBooks.isEmpty()) {
+            return null;
+        }
+
+        Book randomBook = activeBooks.get(new Random().nextInt(activeBooks.size()));
+
+        return bookMapper.toDto(randomBook);
     }
 }

@@ -13,4 +13,5 @@ public interface BookRepository extends JpaRepository<Book, UUID> {
     List<Book> findTop8ByStatusOrderByCreatedOnDesc(BookStatus status);
     List<Book> findTop4ByFeaturedTrueAndStatusOrderByCreatedOnDesc(BookStatus status);
     List<Book> findAllByStatusOrderByRentalPriceDesc(BookStatus status);
+    List<Book> findAllByStatus(BookStatus status);
 }
