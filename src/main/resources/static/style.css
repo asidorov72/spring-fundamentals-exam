@@ -2618,6 +2618,21 @@ footer#footer {
   line-height: 1.2;
 }
 
+.product-style {
+  height: 410px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-style .book-cover-img {
+  width: auto;
+  height: 317px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 /*.admin-action-btn-danger {*/
 /*  color: #a94442;*/
 /*}*/
