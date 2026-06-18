@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head('All Books')}"></head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<section class="py-5 my-5">
+
+    <div class="container">
+
+        <div class="section-header align-center">
+            <div class="title">
+                <span>Browse our collection</span>
+            </div>
+            <h2 class="section-title">All Books</h2>
+        </div>
+
+        <div th:if="${#lists.isEmpty(books)}"
+             class="text-center py-5">
+            No books available.
+        </div>
+
+        <div class="row"
+             th:unless="${#lists.isEmpty(books)}">
+
+            <div class="col-md-3"
+                 th:each="book : ${books}">
+
+                <div class="product-item">
+
+                    <figure class="product-style">
+
+                        <img th:src="${book.bookImage == null or #strings.isEmpty(book.bookImage.trim())
+                                ? '/images/product-item-no-image-cover.png'
+                                : book.bookImage}"
+                             th:alt="${book.title}"
+                             class="product-item">
+
+                    </figure>
+
+                    <figcaption>
+
+                        <h3 th:text="${book.title}">
+                            Book Title
+                        </h3>
+
+                        <span th:text="${book.author}">
+                            Author
+                        </span>
+
+                        <div class="item-price"
+                             th:text="'Reserve for $ ' + ${book.rentalPrice}">
+                            Reserve for $ 10.00
+                        </div>
+
+                        <div class="btn-wrap mt-3">
+                            <a th:href="@{/books/{id}(id=${book.id})}"
+                               class="btn btn-outline-accent btn-accent-arrow">
+                                Reserve
+                                <i class="icon icon-ns-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </figcaption>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<th:block th:replace="~{fragments/scripts :: scripts}"></th:block>
+
+</body>
+</html>

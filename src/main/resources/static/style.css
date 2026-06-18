@@ -2613,6 +2613,11 @@ footer#footer {
   border-radius: 4px;
 }
 
+.contact-btn {
+  padding: 0.75em 1.5em;
+  line-height: 1.2;
+}
+
 /*.admin-action-btn-danger {*/
 /*  color: #a94442;*/
 /*}*/

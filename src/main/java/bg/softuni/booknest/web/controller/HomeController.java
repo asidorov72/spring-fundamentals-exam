@@ -24,6 +24,8 @@ public class HomeController {
     public ModelAndView viewHomePage() {
         ModelAndView mv = new ModelAndView("home");
 
+        mv.addObject("activePage", "home");
+
         mv.addObject("recentlyAddedBooks", bookService.getRecentlyAddedBooks());
         mv.addObject("featuredBooks", bookService.getFeaturedBooks());
         mv.addObject("genres", Genre.values());
