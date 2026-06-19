@@ -114,4 +114,8 @@ public class ReservationService {
         transactionRepository.deleteByReservationId(id);
         reservationRepository.deleteById(id);
     }
+
+    public long getReservationsCount() {
+        return reservationRepository.count();
+    }
 }

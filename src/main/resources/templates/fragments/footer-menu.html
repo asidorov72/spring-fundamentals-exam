@@ -59,7 +59,10 @@
                 </li>
 
                 <li class="menu-item" th:if="${session.user != null}">
-                    <a th:href="@{/reservations}">Reservations</a>
+                    <a th:href="@{/reservations/my}"
+                       th:text="'Reservations (' + ${reservationCount} + ')'">
+                        Reservations (0)
+                    </a>
                 </li>
 
                 <li class="menu-item" th:if="${session.user != null}">
@@ -76,11 +79,6 @@
         <div class="footer-menu">
             <h5>Admin</h5>
             <ul class="menu-list">
-
-<!--                <li class="menu-item"-->
-<!--                    th:if="${session.user != null and session.user.role.name() == 'ADMIN'}">-->
-<!--                    <a th:href="@{/admin}">Admin Section</a>-->
-<!--                </li>-->
 
                 <li class="menu-item"
                     th:if="${session.user != null and session.user.role.name() == 'ADMIN'}">

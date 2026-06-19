@@ -2642,3 +2642,22 @@ footer#footer {
   text-decoration: none;
 }
 
+.admin-dashboard-card {
+  border: 1px solid #e5ddd5;
+  padding: 30px 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.admin-dashboard-card h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.admin-dashboard-card span {
+  font-size: 42px;
+  font-weight: 600;
+}
+
