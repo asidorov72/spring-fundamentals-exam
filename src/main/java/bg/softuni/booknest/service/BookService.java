@@ -110,4 +110,8 @@ public class BookService {
 
         return bookMapper.toDto(randomBook);
     }
+
+    public long getBooksCount() {
+        return bookRepository.count();
+    }
 }

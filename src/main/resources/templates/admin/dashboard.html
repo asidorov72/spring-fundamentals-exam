@@ -16,9 +16,45 @@
         <div th:replace="~{admin/fragments/header :: header('Admin Dashboard')}">
         </div>
 
-        <p>
-            Welcome to BookNest management area.
-        </p>
+        <div class="admin-card">
+
+            <p class="mb-4">
+                Welcome to BookNest management area.
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-3 mb-4">
+                    <div class="admin-dashboard-card">
+                        <h3>Users</h3>
+                        <span th:text="${usersCount}">0</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="admin-dashboard-card">
+                        <h3>Books</h3>
+                        <span th:text="${booksCount}">0</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="admin-dashboard-card">
+                        <h3>Reservations</h3>
+                        <span th:text="${reservationsCount}">0</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="admin-dashboard-card">
+                        <h3>Transactions</h3>
+                        <span th:text="${transactionsCount}">0</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
 
     </main>
 

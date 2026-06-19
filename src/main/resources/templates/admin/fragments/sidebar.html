@@ -26,6 +26,11 @@
             Reservations
         </a>
 
+        <a th:href="@{/admin/transactions}"
+           th:classappend="${activePage == 'transactions'} ? 'active' : ''">
+            Transactions
+        </a>
+
         <hr>
 
         <a th:href="@{/}">

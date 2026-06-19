@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<!--<head th:replace="~{fragments/head :: head('Book Details')}"></head>-->
 <head th:replace="~{fragments/head :: head(${book.title})}"></head>
 
 <body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
@@ -55,10 +54,22 @@
                         </span>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3" th:if="${session.user != null}">
                         <strong>Status:</strong>
-                        <span th:text="${book.status}">
-                            ACTIVE
+
+                        <span th:if="${reservedByCurrentUser}"
+                              class="badge bg-info text-dark">
+                            Reserved by You
+                        </span>
+
+                        <span th:if="${!reservedByCurrentUser and book.status.name() == 'ACTIVE'}"
+                              class="badge bg-success">
+                            Available
+                        </span>
+
+                        <span th:if="${!reservedByCurrentUser and book.status.name() == 'INACTIVE'}"
+                              class="badge bg-danger">
+                            Unavailable
                         </span>
                     </div>
 
@@ -70,25 +81,66 @@
                     </div>
 
                     <div class="mb-4">
-
                         <h5>Description</h5>
 
                         <p th:text="${book.description}">
                             Book description
                         </p>
+                    </div>
 
+                    <div th:if="${successMessage}"
+                         class="alert alert-success mb-4"
+                         th:text="${successMessage}">
+                    </div>
+
+                    <div th:if="${errorMessage}"
+                         class="alert alert-danger mb-4"
+                         th:text="${errorMessage}">
+                    </div>
+
+                    <div class="mb-4">
+                        <strong>Reservation Period:</strong>
+                        14 days
                     </div>
 
                     <div class="btn-wrap">
 
-                        <a href="#"
-                           class="btn btn-outline-accent btn-accent-arrow">
+                        <div th:if="${session.user == null}">
+                            <a th:href="@{/login}"
+                               class="btn btn-outline-accent btn-accent-arrow">
+                                Reserve Book
+                                <i class="icon icon-ns-arrow-right"></i>
+                            </a>
+                        </div>
 
-                            Reserve Book
+                        <div th:if="${session.user != null and !reservedByCurrentUser and book.status.name() == 'ACTIVE'}">
+                            <form th:action="@{/books/{id}/reserve(id=${book.id})}"
+                                  method="post">
 
-                            <i class="icon icon-ns-arrow-right"></i>
+                                <button type="submit"
+                                        class="btn btn-outline-accent btn-accent-arrow">
+                                    Reserve Book
+                                    <i class="icon icon-ns-arrow-right"></i>
+                                </button>
 
-                        </a>
+                            </form>
+                        </div>
+
+                        <div th:if="${session.user != null and reservedByCurrentUser}">
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    disabled>
+                                Reserved by You
+                            </button>
+                        </div>
+
+                        <div th:if="${session.user != null and !reservedByCurrentUser and book.status.name() == 'INACTIVE'}">
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    disabled>
+                                Currently Unavailable
+                            </button>
+                        </div>
 
                     </div>
 

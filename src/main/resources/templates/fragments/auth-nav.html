@@ -14,18 +14,20 @@
         <span>Register</span>
     </a>
 
-    <a th:if="${session.user != null}"
-       th:href="@{/profile}"
-       class="user-account for-buy">
+    <span th:if="${session.user != null}"
+              class="user-account for-buy">
         <i class="icon icon-user"></i>
         <span th:text="${session.user.username}">Profile</span>
-    </a>
+    </span>
 
     <a th:if="${session.user != null}"
-       th:href="@{/reservations}"
+       th:href="@{/reservations/my}"
        class="cart for-buy">
         <i class="icon icon-clipboard"></i>
-        <span>Reservations</span>
+
+        <span th:text="'Reservations (' + ${reservationCount} + ')'">
+            Reservations (0)
+        </span>
     </a>
 
     <a th:if="${session.user != null and session.user.role.name() == 'ADMIN'}"

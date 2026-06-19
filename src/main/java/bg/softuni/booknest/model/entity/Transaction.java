@@ -9,7 +9,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "transactions")
@@ -21,9 +20,6 @@ public class Transaction extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TransactionStatus status;
-
-    @Column(nullable = false, name = "created_on")
-    private LocalDateTime createdOn;
 
     @ManyToOne(optional = false)
     private User user;
@@ -46,15 +42,6 @@ public class Transaction extends BaseEntity {
 
     public Transaction setStatus(TransactionStatus status) {
         this.status = status;
-        return this;
-    }
-
-    public LocalDateTime getCreatedOn() {
-        return createdOn;
-    }
-
-    public Transaction setCreatedOn(LocalDateTime createdOn) {
-        this.createdOn = createdOn;
         return this;
     }
 
