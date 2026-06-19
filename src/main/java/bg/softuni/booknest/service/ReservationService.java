@@ -1,5 +1,7 @@
 package bg.softuni.booknest.service;
 
+import bg.softuni.booknest.mapper.ReservationMapper;
+import bg.softuni.booknest.model.dto.ReservationDto;
 import bg.softuni.booknest.model.entity.Book;
 import bg.softuni.booknest.model.entity.Reservation;
 import bg.softuni.booknest.model.entity.Transaction;
@@ -14,6 +16,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,15 +26,17 @@ public class ReservationService {
     private final TransactionRepository transactionRepository;
     private final BookRepository bookRepository;
     private final UserRepository userRepository;
+    private final ReservationMapper reservationMapper;
 
     public ReservationService(ReservationRepository reservationRepository,
                               TransactionRepository transactionRepository,
                               BookRepository bookRepository,
-                              UserRepository userRepository) {
+                              UserRepository userRepository, ReservationMapper reservationMapper) {
         this.reservationRepository = reservationRepository;
         this.transactionRepository = transactionRepository;
         this.bookRepository = bookRepository;
         this.userRepository = userRepository;
+        this.reservationMapper = reservationMapper;
     }
 
     @Transactional
@@ -69,5 +74,17 @@ public class ReservationService {
 
     public boolean isReservedByCurrentUser(UUID bookId, UUID userId) {
         return reservationRepository.existsByBookIdAndUserId(bookId, userId);
+    }
+
+    public List<ReservationDto> getUserReservations(UUID userId) {
+        return reservationRepository
+                .findAllByUserIdOrderByReservationDateDesc(userId)
+                .stream()
+                .map(reservationMapper::toDto)
+                .toList();
+    }
+
+    public long getReservationCount(UUID userId) {
+        return reservationRepository.countByUserId(userId);
     }
 }
