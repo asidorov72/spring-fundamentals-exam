@@ -2446,7 +2446,9 @@ footer#footer {
 /*----- Auth Section
 --------------------------------------------------------------*/
 
-.auth-form .btn-accent-arrow {
+.auth-form .btn-accent-arrow,
+.book-form .btn-accent-arrow,
+.reservation-form .btn-accent-arrow {
   padding: 12px 28px;
   line-height: 1;
   height: auto;
@@ -2572,7 +2574,9 @@ footer#footer {
   display: none;
 }
 
-.admin-content .auth-form select.form-control {
+.admin-content .auth-form select.form-control,
+.admin-content .book-form select.form-control,
+.admin-content .reservation-form select.form-control {
   appearance: auto;
   -webkit-appearance: auto;
   -moz-appearance: auto;

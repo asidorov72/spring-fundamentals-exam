@@ -12,4 +12,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, UUID> 
     boolean existsByBookIdAndUserId(UUID bookId, UUID userId);
     List<Reservation> findAllByUserIdOrderByReservationDateDesc(UUID userId);
     long countByUserId(UUID userId);
+    List<Reservation> findAllByOrderByReservationDateDesc();
 }

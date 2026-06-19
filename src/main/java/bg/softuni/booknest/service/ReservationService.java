@@ -2,6 +2,7 @@ package bg.softuni.booknest.service;
 
 import bg.softuni.booknest.mapper.ReservationMapper;
 import bg.softuni.booknest.model.dto.ReservationDto;
+import bg.softuni.booknest.model.dto.ReservationEditRequest;
 import bg.softuni.booknest.model.entity.Book;
 import bg.softuni.booknest.model.entity.Reservation;
 import bg.softuni.booknest.model.entity.Transaction;
@@ -31,7 +32,8 @@ public class ReservationService {
     public ReservationService(ReservationRepository reservationRepository,
                               TransactionRepository transactionRepository,
                               BookRepository bookRepository,
-                              UserRepository userRepository, ReservationMapper reservationMapper) {
+                              UserRepository userRepository,
+                              ReservationMapper reservationMapper) {
         this.reservationRepository = reservationRepository;
         this.transactionRepository = transactionRepository;
         this.bookRepository = bookRepository;
@@ -86,5 +88,30 @@ public class ReservationService {
 
     public long getReservationCount(UUID userId) {
         return reservationRepository.countByUserId(userId);
+    }
+
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAllByOrderByReservationDateDesc();
+    }
+
+    public Reservation getReservationById(UUID id) {
+        return reservationRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Reservation not found"));
+    }
+
+    public void updateReservation(UUID id, ReservationEditRequest request) {
+        Reservation reservation = getReservationById(id);
+
+        reservation
+                .setReservationDate(request.getReservationDate())
+                .setReturnDate(request.getReturnDate());
+
+        reservationRepository.save(reservation);
+    }
+
+    @Transactional
+    public void deleteReservation(UUID id) {
+        transactionRepository.deleteByReservationId(id);
+        reservationRepository.deleteById(id);
     }
 }
