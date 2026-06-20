@@ -4,9 +4,33 @@ BookNest is an online book reservation platform built with Spring Boot and Thyme
 
 The application allows users to browse books, reserve books, manage personal reservations, and provides an administration area for managing users, books, reservations, and transactions.
 
-Repository:
+## Repository
 
 https://github.com/asidorov72/spring-fundamentals-exam
+
+---
+
+## Application Entry Points
+
+### Home Page
+
+http://localhost:8098
+
+### Administration Area
+
+http://localhost:8098/admin
+
+---
+
+## Screenshots
+
+### Home Page
+
+![Home Page](src/main/resources/static/images/readme/home-page.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](src/main/resources/static/images/readme/admin-dashboard.png)
 
 ---
 
@@ -109,12 +133,6 @@ admin / admin123
 ### User
 
 user / user123
-
-### Additional Accounts
-
-test / test123
-
-vpupkin / 123123
 
 ---
 
