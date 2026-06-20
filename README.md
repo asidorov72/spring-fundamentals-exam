@@ -110,12 +110,6 @@ admin / admin123
 
 user / user123
 
-### Additional Accounts
-
-test / test123
-
-vpupkin / 123123
-
 ---
 
 ## Automated Tests
