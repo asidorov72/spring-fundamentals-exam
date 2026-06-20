@@ -6,10 +6,7 @@ import bg.softuni.booknest.service.BookService;
 import bg.softuni.booknest.service.ReservationService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,11 +25,12 @@ public class BookController {
     }
 
     @GetMapping
-    public ModelAndView viewBooksPage() {
+    public ModelAndView viewBooksPage(@RequestParam(required = false) String query) {
         ModelAndView mv = new ModelAndView("books");
 
         mv.addObject("activePage", "books");
-        mv.addObject("books", bookService.getAllBooks());
+        mv.addObject("books", bookService.searchActiveBooks(query));
+        mv.addObject("query", query);
 
         return mv;
     }

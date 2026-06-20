@@ -114,4 +114,18 @@ public class BookService {
     public long getBooksCount() {
         return bookRepository.count();
     }
+
+    public List<BookDto> searchActiveBooks(String query) {
+        if (query == null || query.isBlank()) {
+            return bookRepository.findAllByStatus(BookStatus.ACTIVE)
+                    .stream()
+                    .map(bookMapper::toDto)
+                    .toList();
+        }
+
+        return bookRepository.searchByTitleAuthorOrGenre(BookStatus.ACTIVE, query.trim())
+                .stream()
+                .map(bookMapper::toDto)
+                .toList();
+    }
 }
